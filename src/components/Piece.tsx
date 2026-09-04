@@ -203,7 +203,7 @@ const Piece = () => {
       <a
         href="https://danielisaacmiller.com"
         aria-label="Daniel Isaac Miller"
-        className="absolute left-8 top-8 z-10 sm:left-10 sm:top-10"
+        className="absolute left-8 top-8 z-10 cursor-pointer sm:left-10 sm:top-10"
       >
         <Image src="/DM-Logo-Light.svg" alt="Logo" width={62} height={62} priority />
       </a>

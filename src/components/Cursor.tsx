@@ -35,7 +35,7 @@ export default function Cursor() {
     // Over interactive controls the custom dot hides and the native
     // pointer cursor takes over.
     const isOverControl = (event: PointerEvent) =>
-      event.target instanceof Element && event.target.closest("button") !== null
+      event.target instanceof Element && event.target.closest("button, a") !== null
 
     const onPointerMove = (event: PointerEvent) => {
       cursor.moveTo(event.clientX, event.clientY)

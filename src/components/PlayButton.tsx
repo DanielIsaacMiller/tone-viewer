@@ -126,11 +126,11 @@ export default function PlayButton({ onPlay }: PlayButtonProps) {
         type="button"
         onClick={handlePlay}
         aria-label="Play"
-        className="group pointer-events-auto relative col-start-1 row-start-1 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-[1.6px] border-[#151515] transition-colors duration-[250ms] hover:bg-[#ffb7d5]"
+        className="group pointer-events-auto relative col-start-1 row-start-1 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-[1.6px] border-[#151515] transition-colors duration-[250ms] hover:border-transparent hover:bg-[#ffb7d5]"
       >
         <Play
           ref={iconRef}
-          className="h-5 w-5 fill-[#151515] text-[#151515] transition-colors duration-[250ms]"
+          className="h-5 w-5 fill-[#151515] text-[#151515] transition-colors duration-[250ms] group-hover:fill-[#FFFFF0] group-hover:text-[#FFFFF0]"
           strokeWidth={0}
         />
       </button>

@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+  /* The native cursor is replaced everywhere by the Cursor's own SVG dot. */
+  cursor: none;
+}
+
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgb(45 38 22 / 0.32) 100%
+  );
+}
+
+/* Murky water behind glass: slow drifting stains of sediment that never
+   quite repeat their path. */
+.murk {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(42% 38% at 22% 30%, rgb(122 106 82 / 0.13), transparent 70%),
+    radial-gradient(50% 44% at 75% 65%, rgb(96 112 96 / 0.11), transparent 70%),
+    radial-gradient(35% 30% at 60% 22%, rgb(140 120 96 / 0.1), transparent 70%),
+    radial-gradient(30% 26% at 40% 80%, rgb(110 96 78 / 0.09), transparent 70%);
+  animation: murk-drift 34s ease-in-out infinite alternate;
+}
+
+@keyframes murk-drift {
+  from {
+    transform: translate(-2.5%, -1.5%) scale(1);
+  }
+  to {
+    transform: translate(2.5%, 2%) scale(1.07);
+  }
+}
+
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Tone Viewer kiosk (Next.js)
+After=network-online.target
+
+[Service]
+Type=simple
+User=daniel
+WorkingDirectory=/home/daniel/tone-viewer
+ExecStart=/usr/local/bin/npm run start -- -p 3100
+Restart=on-failure
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

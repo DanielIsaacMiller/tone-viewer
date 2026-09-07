@@ -92,8 +92,8 @@ export default function PlayButton({ onPlay }: PlayButtonProps) {
   const handlePlay = useCallback(() => {
     onPlay?.()
 
-    // One circle: the button itself becomes the ripple — grows to 256px,
-    // turns charm pink, and fades to zero.
+    // One circle: the button itself becomes the ripple — grows to 256px and
+    // fades to zero.
     gsap.fromTo(
       buttonRef.current,
       { scale: 1, opacity: 0.9, borderColor: '#151515', borderWidth: 1.6 },
@@ -105,16 +105,16 @@ export default function PlayButton({ onPlay }: PlayButtonProps) {
         opacity: 0,
         duration: 0.6,
         ease: 'power2.out',
+        // Counter-scale the icon every frame so it fades in place — only
+        // the circle itself scales.
+        onUpdate: () => {
+          const s = Number(gsap.getProperty(buttonRef.current, 'scale')) || 1
+          gsap.set(iconRef.current, { scale: 1 / s })
+        },
         onComplete: () => setGone(true),
       },
     )
-    // The color flips to pink almost immediately — a quick snap, not a drift.
-    gsap.fromTo(
-      buttonRef.current,
-      { borderColor: '#151515' },
-      { borderColor: CHARM_PINK, duration: 0.35, ease: 'power2.out' },
-    )
-    gsap.to(iconRef.current, { opacity: 0, duration: 0.5 })
+    gsap.to(iconRef.current, { opacity: 0, duration: 0.25 })
   }, [onPlay])
 
   if (gone) return null

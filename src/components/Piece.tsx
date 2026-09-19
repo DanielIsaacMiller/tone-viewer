@@ -1,11 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import * as THREE from 'three';
 
-import Cursor from './Cursor';
 import DebugPanel, { type DebugMetrics } from './DebugPanel';
 import LoadingRing from './LoadingRing';
 import PlayButton from './PlayButton';
@@ -183,7 +181,6 @@ const Piece = () => {
       style={{ background: PIECE.palette.pageBackground }}
     >
       <canvas ref={canvasRef} className="block h-full w-full" />
-      <Cursor />
       {debugConfig?.features.murk !== false && <div className="murk" aria-hidden />}
       <div className="vignette" aria-hidden />
 
@@ -200,13 +197,6 @@ const Piece = () => {
         )}
       </div>
 
-      <a
-        href="https://danielisaacmiller.com"
-        aria-label="Daniel Isaac Miller"
-        className="absolute left-8 top-8 z-10 cursor-pointer sm:left-10 sm:top-10"
-      >
-        <Image src="/DM-Logo-Light.svg" alt="Logo" width={62} height={62} priority />
-      </a>
       {debugConfig?.debugPanel && (
         <DebugPanel
           features={debugConfig.features}
